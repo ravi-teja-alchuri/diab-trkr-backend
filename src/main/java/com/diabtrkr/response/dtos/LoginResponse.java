@@ -1,9 +1,11 @@
 package com.diabtrkr.response.dtos;
 
+import com.diabtrkr.models.User;
+
 public class LoginResponse {
 
 	private String token;
-	private boolean firstTime;
+	private User user;
 
 	public String getToken() {
 		return token;
@@ -13,12 +15,12 @@ public class LoginResponse {
 		this.token = token;
 	}
 
-	public boolean isFirstTime() {
-		return firstTime;
+	public User getUser() {
+		return user;
 	}
 
-	public void setFirstTime(boolean firstTime) {
-		this.firstTime = firstTime;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

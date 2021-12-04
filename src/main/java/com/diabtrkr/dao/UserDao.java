@@ -6,8 +6,6 @@ public interface UserDao {
 
 	User add(User model);
 
-	User getByUsernameAndPassword(String username, String password);
-
 	User getByUsername(String username);
 
 }

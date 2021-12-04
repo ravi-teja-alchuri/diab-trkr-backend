@@ -71,7 +71,7 @@ public class TokenUtils {
 
 	}
 
-	private String printException(Exception e) {
+	public String printException(Exception e) {
 		StringWriter stringWriter = new StringWriter();
 		PrintWriter writer = new PrintWriter(stringWriter);
 		e.printStackTrace(writer);

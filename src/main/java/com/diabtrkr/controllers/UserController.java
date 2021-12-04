@@ -13,7 +13,7 @@ import com.diabtrkr.response.dtos.LoginResponse;
 import com.diabtrkr.services.UserService;
 
 @RestController
-@RequestMapping("/rest/users")
+@RequestMapping("/rest/user")
 public class UserController {
 
 	@Autowired

@@ -3,6 +3,7 @@ package com.diabtrkr.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.diabtrkr.controllers.utils.PasswordUtils;
 import com.diabtrkr.controllers.utils.TokenUtils;
 import com.diabtrkr.dao.UserDao;
 import com.diabtrkr.exceptions.GenericException;
@@ -19,13 +20,24 @@ public class UserService {
 	@Autowired
 	TokenUtils tu;
 
+	@Autowired
+	PasswordUtils passwordUtils;
+
 	public User create(User model) {
+		model.setUsername(model.getUsername().toLowerCase());
 		User existing = getByUsername(model.getUsername());
 		if (existing != null) {
 			throw new GenericException("Username already exists, please use a different one");
 		}
 
-		return dao.add(model);
+		String encryptedPassword = passwordUtils.getEncryptedPassword(model.getPassword());
+		if (encryptedPassword == null)
+			throw new GenericException("Unable to encrypt the password");
+		model.setPassword(encryptedPassword);
+
+		model = dao.add(model);
+		model.setPassword(null);
+		return model;
 	}
 
 	private User getByUsername(String username) {
@@ -33,15 +45,19 @@ public class UserService {
 	}
 
 	public LoginResponse login(LoginDTO dto) {
-		User user = dao.getByUsernameAndPassword(dto.getUsername(), dto.getPassword());
+		User user = dao.getByUsername(dto.getUsername());
 		if (user == null) {
 			throw new GenericException("Incorrect username or password");
 		}
+		boolean valid = passwordUtils.validatePassword(dto.getPassword(), user.getPassword());
+		if (!valid) {
+			throw new GenericException("Invalid username or password");
+		}
 
 		String token = tu.generateToken(user);
-
+		user.setPassword(null);
 		LoginResponse res = new LoginResponse();
-		res.setFirstTime(user.isFirstTime());
+		res.setUser(user);
 		res.setToken(token);
 
 		return res;
