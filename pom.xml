@@ -10,11 +10,11 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.diabtrkr</groupId>
-	<artifactId>diabTrkr_auth</artifactId>
+	<artifactId>diabTrkr</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>DiabTrkr Auth</name>
-	<description>DiabTrkr Auth Server</description>
+	<name>DiabTrkr</name>
+	<description>DiabTrkr Backend Server</description>
 	<properties>
 		<java.version>8</java.version>
 	</properties>
