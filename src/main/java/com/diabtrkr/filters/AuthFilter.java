@@ -20,9 +20,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.diabtrkr.beans.TokenBean;
 import com.diabtrkr.controllers.utils.AppConstants;
+import com.diabtrkr.controllers.utils.AppConstants.StatusCodes;
 import com.diabtrkr.controllers.utils.TokenAuthentication;
 import com.diabtrkr.controllers.utils.TokenUtils;
-import com.diabtrkr.controllers.utils.AppConstants.StatusCodes;
 import com.diabtrkr.response.dtos.DataResult;
 import com.google.gson.Gson;
 
@@ -98,8 +98,8 @@ public class AuthFilter extends OncePerRequestFilter {
 		exemptedList.add(AppConstants.APPLICATION_BASE_PATH + "/v2");
 		exemptedList.add(AppConstants.APPLICATION_BASE_PATH + "/csrf");
 
-		exemptedList.add(AppConstants.APPLICATION_REST_BASE_PATH + "/users/login");
-		exemptedList.add(AppConstants.APPLICATION_REST_BASE_PATH + "/users/signup");
+		exemptedList.add(AppConstants.APPLICATION_REST_BASE_PATH + "/user/login");
+		exemptedList.add(AppConstants.APPLICATION_REST_BASE_PATH + "/user/signup");
 
 	}
 

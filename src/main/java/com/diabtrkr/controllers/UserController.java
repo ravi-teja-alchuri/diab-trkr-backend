@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.diabtrkr.models.User;
 import com.diabtrkr.request.dtos.LoginDTO;
+import com.diabtrkr.request.dtos.UserDTO;
 import com.diabtrkr.response.dtos.LoginResponse;
 import com.diabtrkr.services.UserService;
 
@@ -20,8 +21,8 @@ public class UserController {
 	UserService service;
 
 	@PostMapping("/signup")
-	public ResponseEntity<User> signup(@RequestBody User model) {
-		User user = service.create(model);
+	public ResponseEntity<User> signup(@RequestBody UserDTO dto) {
+		User user = service.create(dto);
 		return ResponseEntity.ok(user);
 	}
 

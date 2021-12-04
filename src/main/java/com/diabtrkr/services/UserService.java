@@ -9,6 +9,7 @@ import com.diabtrkr.dao.UserDao;
 import com.diabtrkr.exceptions.GenericException;
 import com.diabtrkr.models.User;
 import com.diabtrkr.request.dtos.LoginDTO;
+import com.diabtrkr.request.dtos.UserDTO;
 import com.diabtrkr.response.dtos.LoginResponse;
 
 @Service
@@ -23,17 +24,24 @@ public class UserService {
 	@Autowired
 	PasswordUtils passwordUtils;
 
-	public User create(User model) {
-		model.setUsername(model.getUsername().toLowerCase());
-		User existing = getByUsername(model.getUsername());
+	public User create(UserDTO dto) {
+		dto.setUsername(dto.getUsername().toLowerCase());
+		User existing = getByUsername(dto.getUsername());
 		if (existing != null) {
 			throw new GenericException("Username already exists, please use a different one");
 		}
 
-		String encryptedPassword = passwordUtils.getEncryptedPassword(model.getPassword());
+		String encryptedPassword = passwordUtils.getEncryptedPassword(dto.getPassword());
 		if (encryptedPassword == null)
 			throw new GenericException("Unable to encrypt the password");
+		User model = new User();
+		model.setUsername(dto.getUsername());
 		model.setPassword(encryptedPassword);
+
+		model.setFirstName(dto.getFirstName());
+		model.setLastName(dto.getLastName());
+		model.setGender(dto.getGender());
+		model.setAge(dto.getAge());
 
 		model = dao.add(model);
 		model.setPassword(null);
