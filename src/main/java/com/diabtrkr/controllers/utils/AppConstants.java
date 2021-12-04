@@ -10,7 +10,7 @@ public class AppConstants {
 	/**
 	 * APPLICATION SPECIFIC
 	 */
-	public static final String APPLICATION_BASE_PATH = "/diab";
+	public static final String APPLICATION_BASE_PATH = "/diabTrkr";
 	public static final String APPLICATION_REST_BASE_PATH = APPLICATION_BASE_PATH + "/rest";
 	public static final String APPLICATION_NAME = "DiabTrkr Server";
 	public static final String APPLICATION_PACKAGE_CONTROLLERS = "com.diabtrkr.controllers";
