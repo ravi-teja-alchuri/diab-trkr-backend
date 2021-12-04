@@ -14,6 +14,7 @@ public class MyAuditor implements AuditorAware<String> {
 
 	@Override
 	public Optional<String> getCurrentAuditor() {
+
 		TokenAuthentication authentication = (TokenAuthentication) SecurityContextHolder.getContext()
 				.getAuthentication();
 		TokenBean token = (TokenBean) authentication.getPrincipal();

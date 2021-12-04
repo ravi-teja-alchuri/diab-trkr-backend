@@ -17,8 +17,9 @@ public class TokenAuthentication implements Authentication {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return this.token.getUserId();
+		if (this.token != null)
+			return this.token.getUserId();
+		return "UNKNOWN_USERID";
 	}
 
 	@Override

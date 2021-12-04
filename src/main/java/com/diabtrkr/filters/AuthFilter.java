@@ -58,6 +58,9 @@ public class AuthFilter extends OncePerRequestFilter {
 		// Check for OPEN APIs
 		authVerified = isOpenAPI(requestedURI);
 		if (authVerified) {
+			token = new TokenBean();
+			token.setUserId("anonymous");
+			SecurityContextHolder.getContext().setAuthentication(new TokenAuthentication(token));
 			chain.doFilter(request, response);
 			return;
 		}
