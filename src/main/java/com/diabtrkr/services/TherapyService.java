@@ -15,6 +15,9 @@ public class TherapyService {
 	TherapyDao dao;
 
 	@Autowired
+	UserService userService;
+
+	@Autowired
 	TokenUtils tu;
 
 	public Therapy create(TherapyDTO dto) {
@@ -25,6 +28,7 @@ public class TherapyService {
 		model.setType(dto.getType());
 		model.setOnPills(dto.getOnPills());
 
+		userService.setFirstTime(false);
 		return dao.save(model);
 	}
 

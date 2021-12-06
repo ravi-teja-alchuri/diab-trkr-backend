@@ -9,7 +9,7 @@ public class User extends BaseModel {
 	private String gender;
 	private Integer age;
 
-	private boolean firstTime;
+	private boolean firstTime = true;
 
 	public String getFirstName() {
 		return firstName;

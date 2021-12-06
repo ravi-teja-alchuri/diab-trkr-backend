@@ -71,6 +71,7 @@ public class AuthFilter extends OncePerRequestFilter {
 		if (accessToken != null) {
 			accessToken = accessToken.split(" ")[1].trim();
 			token = jwtUtils.decodeToken(accessToken);
+			authVerified = true;
 		}
 
 		if (!authVerified) {

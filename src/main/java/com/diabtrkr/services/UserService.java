@@ -71,4 +71,9 @@ public class UserService {
 		return res;
 	}
 
+	public void setFirstTime(boolean firstTime) {
+		dao.setFirstTime(tu.getUserId(), firstTime);
+
+	}
+
 }

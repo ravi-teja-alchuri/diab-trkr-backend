@@ -8,4 +8,6 @@ public interface UserDao {
 
 	User getByUsername(String username);
 
+	void setFirstTime(String id, boolean firstTime);
+
 }
