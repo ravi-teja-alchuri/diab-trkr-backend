@@ -2,6 +2,7 @@ package com.diabtrkr.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,11 @@ public class UserController {
 	public ResponseEntity<User> signup(@RequestBody UserDTO dto) {
 		User user = service.create(dto);
 		return ResponseEntity.ok(user);
+	}
+
+	@GetMapping("/hello")
+	public ResponseEntity<String> sayHello() {
+		return ResponseEntity.ok("Hey! How are you doing?");
 	}
 
 	@PostMapping("/login")

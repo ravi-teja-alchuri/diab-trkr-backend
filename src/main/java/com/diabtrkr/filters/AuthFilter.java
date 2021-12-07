@@ -103,6 +103,7 @@ public class AuthFilter extends OncePerRequestFilter {
 		exemptedList.add(AppConstants.APPLICATION_BASE_PATH + "/csrf");
 
 		exemptedList.add(AppConstants.APPLICATION_REST_BASE_PATH + "/user/login");
+		exemptedList.add(AppConstants.APPLICATION_REST_BASE_PATH + "/user/hello");
 		exemptedList.add(AppConstants.APPLICATION_REST_BASE_PATH + "/user/signup");
 
 	}
