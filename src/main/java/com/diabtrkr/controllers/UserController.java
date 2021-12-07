@@ -29,7 +29,7 @@ public class UserController {
 
 	@GetMapping("/hello")
 	public ResponseEntity<String> sayHello() {
-		return ResponseEntity.ok("Hey! How are you doing?");
+		return ResponseEntity.ok("Hello! How are you doing?");
 	}
 
 	@PostMapping("/login")
