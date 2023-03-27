@@ -1,4 +1,4 @@
-# diab-trkr-backend
+# Diab-trkr-backend
 Backed Service for Diabetes Tracker
 
 ## Requirements
